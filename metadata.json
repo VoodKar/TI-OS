@@ -1,0 +1,6 @@
+{
+  "name": "OS de Entregas IT",
+  "description": "Aplicativo para técnicos registrarem entregas de equipamentos de TI com assinatura digital e geração de PDF.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
