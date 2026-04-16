@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowLeft, Monitor, Laptop, Tag, Hash, FileSignature, CheckCircle2, Share2, MessageCircle } from 'lucide-react';
+import { ArrowLeft, Monitor, Laptop, Tag, Hash, FileSignature, CheckCircle2, Share2, MessageCircle, Home } from 'lucide-react';
 import { Company, EquipmentType, DeliveryReport } from '../types';
 import { SignaturePadComponent } from '../components/SignaturePad';
 import { generateDeliveryPDF } from '../lib/pdf';
@@ -102,9 +102,10 @@ export const FormScreen: React.FC<Props> = ({ company, onBack }) => {
 
           <button
             onClick={onBack}
-            className="w-full py-5 text-app-secondary text-sm font-semibold hover:text-app-text transition-colors pt-4"
+            className="w-full py-5 text-primary text-sm font-bold hover:text-blue-700 transition-colors pt-4 flex items-center justify-center gap-2"
           >
-            Nova Entrega
+            <Home size={18} />
+            Voltar ao Início
           </button>
         </div>
       </div>
