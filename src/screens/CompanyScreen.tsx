@@ -18,9 +18,28 @@ export const CompanyScreen: React.FC<Props> = ({ onSelect, onOpenHistory }) => {
   useEffect(() => {
     const saved = localStorage.getItem('companies');
     const initial = [
-      { id: '1', name: 'Dibisa' },
-      { id: '2', name: 'Drogaria Americana' },
-      { id: '3', name: 'Fusão Ligas' },
+      { id: '1', name: 'Americana Jmde' },
+      { id: '2', name: 'LABORAR' },
+      { id: '3', name: 'Farmacia N. Senhora Aparecida' },
+      { id: '4', name: 'Dibisa' },
+      { id: '5', name: 'Coopertramon' },
+      { id: '6', name: 'Credibelgo' },
+      { id: '7', name: 'Sempre Volta' },
+      { id: '8', name: 'Casa Forte' },
+      { id: '9', name: 'Ultra Popular Jmde' },
+      { id: '10', name: 'Copremon' },
+      { id: '11', name: 'Ultra Popular Barao' },
+      { id: '12', name: 'Unalog' },
+      { id: '13', name: 'Fusao Ligas' },
+      { id: '14', name: 'Casa Construção' },
+      { id: '15', name: 'Box Mineiro' },
+      { id: '16', name: 'Coopecic' },
+      { id: '17', name: 'ABC da Construção' },
+      { id: '18', name: 'Drogaria Loanda' },
+      { id: '19', name: 'Aqua' },
+      { id: '20', name: 'Brunauer' },
+      { id: '21', name: 'CH Nutri' },
+      { id: '22', name: 'Eletroduarte' },
     ];
     if (saved) {
       setCompanies(JSON.parse(saved).sort((a: Company, b: Company) => a.name.localeCompare(b.name)));
