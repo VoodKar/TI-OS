@@ -102,25 +102,27 @@ export const HistoryScreen: React.FC<Props> = ({ onBack }) => {
             <ArrowLeft size={24} />
           </button>
           <Logo className="h-20" />
-          <div className="absolute right-0 flex items-center gap-2">
-            <button 
-              onClick={() => setShowFilters(!showFilters)}
-              className={cn("p-3 rounded-xl transition-all", showFilters ? "bg-white text-primary" : "bg-white/10 text-white hover:bg-white/20")}
-              title="Filtrar"
-            >
-              <Search size={20} />
-            </button>
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 flex flex-col items-center gap-2">
+            <div className="flex items-center gap-2">
+              <button 
+                onClick={() => setShowFilters(!showFilters)}
+                className={cn("p-2.5 rounded-lg transition-all", showFilters ? "bg-white text-primary" : "bg-white/10 text-white hover:bg-white/20")}
+                title="Filtrar"
+              >
+                <Search size={18} />
+              </button>
+              <label className="p-2.5 bg-white/10 rounded-lg text-white hover:bg-white/20 transition-all cursor-pointer" title="Importar JSON">
+                <Upload size={18} />
+                <input type="file" accept=".json" onChange={handleImport} className="hidden" />
+              </label>
+            </div>
             <button 
               onClick={handleExport}
-              className="p-3 bg-white/10 rounded-xl text-white hover:bg-white/20 transition-all"
+              className="p-2.5 bg-white/10 rounded-lg text-white hover:bg-white/20 transition-all w-full flex justify-center"
               title="Exportar JSON"
             >
-              <Download size={20} />
+              <Download size={18} />
             </button>
-            <label className="p-3 bg-white/10 rounded-xl text-white hover:bg-white/20 transition-all cursor-pointer" title="Importar JSON">
-              <Upload size={20} />
-              <input type="file" accept=".json" onChange={handleImport} className="hidden" />
-            </label>
           </div>
         </div>
         <div className="text-center">
