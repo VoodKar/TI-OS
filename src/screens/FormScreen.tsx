@@ -47,34 +47,32 @@ export const FormScreen: React.FC<Props> = ({ company, onBack }) => {
     localStorage.setItem('deliveryHistory', JSON.stringify([...history, newReport]));
 
     // Webhook Integration
-    const webhookUrl = import.meta.env.VITE_MAKE_WEBHOOK_URL;
+    const webhookUrl = "https://hook.us2.make.com/hr4l2bgj06bxnafx445ib3top93nxh6p";
     
-    if (webhookUrl) {
-      try {
-        const response = await fetch(webhookUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            chamado: ticketNumber,
-            empresa: company.name,
-            tipo: equipmentType,
-            tag: tag,
-            recebedor: recipientName,
-            data: format(new Date(newReport.timestamp), "dd/MM/yyyy HH:mm")
-          })
-        });
+    try {
+      const response = await fetch(webhookUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          chamado: ticketNumber,
+          empresa: company.name,
+          tipo: equipmentType,
+          tag: tag,
+          recebedor: recipientName,
+          data: new Date().toLocaleString("pt-BR")
+        })
+      });
 
-        if (response.ok) {
-          alert("Dados enviados com sucesso");
-        } else {
-          alert("Erro ao enviar dados");
-        }
-      } catch (error) {
-        console.error('Webhook error:', error);
+      if (response.ok) {
+        alert("Dados enviados para o sistema com sucesso");
+      } else {
         alert("Erro ao enviar dados");
       }
+    } catch (error) {
+      console.log(error);
+      alert("Erro de conexão com o webhook");
     }
   };
 
