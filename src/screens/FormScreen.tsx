@@ -6,6 +6,7 @@ import { generateDeliveryPDF } from '../lib/pdf';
 import { format } from 'date-fns';
 import { cn } from '../lib/utils';
 import { motion, AnimatePresence } from 'motion/react';
+import { Logo } from '../components/Logo';
 
 interface Props {
   company: Company;
@@ -114,13 +115,17 @@ export const FormScreen: React.FC<Props> = ({ company, onBack }) => {
 
   return (
     <div className="flex-1 flex flex-col bg-app-bg min-h-screen">
-      <header className="bg-primary px-8 pt-12 pb-8 sticky top-0 z-10 flex items-center gap-4 shadow-lg shadow-primary/10">
-        <button onClick={onBack} className="p-3 bg-white/10 rounded-xl text-white hover:bg-white/20 transition-colors">
-          <ArrowLeft size={24} />
-        </button>
-        <div>
-          <h1 className="text-2xl font-bold text-white tracking-tight">{company.name}</h1>
-          <p className="text-blue-100 text-sm">Registro de Entrega</p>
+      <header className="bg-primary px-8 pt-6 pb-8 sticky top-0 z-10 transition-all flex flex-col items-center shadow-lg shadow-primary/10 overflow-hidden">
+        <div className="w-full relative flex justify-center items-center mb-6">
+          <button onClick={onBack} className="absolute left-0 p-3 bg-white/10 rounded-xl text-white hover:bg-white/20 transition-colors">
+            <ArrowLeft size={24} />
+          </button>
+          <Logo className="h-20" />
+        </div>
+        <div className="text-center px-4">
+          <h1 className="text-xl font-extrabold text-white tracking-widest leading-tight uppercase">{company.name}</h1>
+          <div className="h-0.5 w-6 bg-white/20 mx-auto mt-1 rounded-full" />
+          <p className="text-blue-200 text-[10px] font-bold uppercase tracking-[2px] mt-2">Registro de Entrega</p>
         </div>
       </header>
 

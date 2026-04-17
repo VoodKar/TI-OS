@@ -3,6 +3,7 @@ import { Plus, Building2, ChevronRight, Save, Clock, Trash2, X } from 'lucide-re
 import { Company } from '../types';
 import { cn } from '../lib/utils';
 import { motion, AnimatePresence } from 'motion/react';
+import { Logo } from '../components/Logo';
 
 interface Props {
   onSelect: (company: Company) => void;
@@ -71,18 +72,20 @@ export const CompanyScreen: React.FC<Props> = ({ onSelect, onOpenHistory }) => {
 
   return (
     <div className="flex-1 flex flex-col bg-app-bg min-h-screen">
-      <header className="bg-primary px-8 pt-12 pb-8 sticky top-0 z-10 transition-all flex justify-between items-start shadow-lg shadow-primary/10">
-        <div>
-          <h1 className="text-2xl font-bold text-white tracking-tight">OS Digital</h1>
-          <p className="text-blue-100 text-sm mt-1">Selecionar Empresa</p>
+      <header className="bg-primary px-8 pt-6 pb-8 sticky top-0 z-10 transition-all flex flex-col items-center shadow-lg shadow-primary/10 overflow-hidden">
+        <div className="w-full relative flex justify-center items-center mb-6">
+          <Logo className="h-20" />
+          <button 
+            onClick={onOpenHistory}
+            className="absolute right-0 p-3 bg-white/10 rounded-xl text-white hover:bg-white/20 transition-colors active:scale-90"
+            title="Ver Histórico"
+          >
+            <Clock size={22} />
+          </button>
         </div>
-        <button 
-          onClick={onOpenHistory}
-          className="p-3 bg-white/10 rounded-xl text-white hover:bg-white/20 transition-colors active:scale-90"
-          title="Ver Histórico"
-        >
-          <Clock size={22} />
-        </button>
+        <div className="text-center">
+          <p className="text-blue-200 text-[11px] font-bold uppercase tracking-[3px]">Selecionar Empresa</p>
+        </div>
       </header>
 
       <div className="flex-1 p-8 space-y-4 pb-32 -mt-4 bg-app-bg rounded-t-[24px] z-20">

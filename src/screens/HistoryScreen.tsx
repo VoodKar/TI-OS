@@ -6,6 +6,7 @@ import { format, isSameDay } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { motion, AnimatePresence } from 'motion/react';
 import { generateDeliveryPDF } from '../lib/pdf';
+import { Logo } from '../components/Logo';
 
 interface Props {
   onBack: () => void;
@@ -95,17 +96,13 @@ export const HistoryScreen: React.FC<Props> = ({ onBack }) => {
 
   return (
     <div className="flex-1 flex flex-col bg-app-bg min-h-screen">
-      <header className="bg-primary px-8 pt-12 pb-8 sticky top-0 z-20 flex items-center justify-between gap-4 shadow-lg shadow-primary/10">
-        <div className="flex items-center gap-4">
-          <button onClick={onBack} className="p-3 bg-white/10 rounded-xl text-white hover:bg-white/20 transition-colors">
+      <header className="bg-primary px-8 pt-6 pb-8 sticky top-0 z-20 flex flex-col items-center shadow-lg shadow-primary/10 transition-all overflow-hidden">
+        <div className="w-full relative flex justify-center items-center mb-6">
+          <button onClick={onBack} className="absolute left-0 p-3 bg-white/10 rounded-xl text-white hover:bg-white/20 transition-colors">
             <ArrowLeft size={24} />
           </button>
-          <div>
-            <h1 className="text-2xl font-bold text-white tracking-tight">Histórico</h1>
-            <p className="text-blue-100 text-sm">Registros de entregas</p>
-          </div>
-        </div>
-        <div className="flex items-center gap-2">
+          <Logo className="h-20" />
+          <div className="absolute right-0 flex items-center gap-2">
             <button 
               onClick={() => setShowFilters(!showFilters)}
               className={cn("p-3 rounded-xl transition-all", showFilters ? "bg-white text-primary" : "bg-white/10 text-white hover:bg-white/20")}
@@ -125,7 +122,13 @@ export const HistoryScreen: React.FC<Props> = ({ onBack }) => {
               <input type="file" accept=".json" onChange={handleImport} className="hidden" />
             </label>
           </div>
-        </header>
+        </div>
+        <div className="text-center">
+          <h1 className="text-xl font-extrabold text-white tracking-widest uppercase">Histórico</h1>
+          <div className="h-0.5 w-6 bg-white/20 mx-auto mt-1 rounded-full" />
+          <p className="text-blue-200 text-[10px] font-bold uppercase tracking-[2px] mt-2">Registros de entregas</p>
+        </div>
+      </header>
 
       {/* Filters Bar */}
       <AnimatePresence>
