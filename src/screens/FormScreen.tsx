@@ -114,24 +114,13 @@ export const FormScreen: React.FC<Props> = ({ company, onBack }) => {
 
   return (
     <div className="flex-1 flex flex-col bg-app-bg min-h-screen">
-      <header className="bg-primary px-8 pt-10 pb-8 sticky top-0 z-10 shadow-lg shadow-primary/10">
-        <div className="flex flex-col gap-6">
-          <img 
-            src="/logo.png" 
-            alt="TI do Brasil" 
-            className="h-10 w-auto object-contain brightness-0 invert"
-            referrerPolicy="no-referrer"
-            onError={(e) => (e.currentTarget.style.display = 'none')}
-          />
-          <div className="flex items-center gap-4">
-            <button onClick={onBack} className="p-3 bg-white/10 rounded-xl text-white hover:bg-white/20 transition-colors">
-              <ArrowLeft size={24} />
-            </button>
-            <div>
-              <h1 className="text-2xl font-bold text-white tracking-tight">{company.name}</h1>
-              <p className="text-blue-100 text-sm">Registro de Entrega</p>
-            </div>
-          </div>
+      <header className="bg-primary px-8 pt-12 pb-8 sticky top-0 z-10 flex items-center gap-4 shadow-lg shadow-primary/10">
+        <button onClick={onBack} className="p-3 bg-white/10 rounded-xl text-white hover:bg-white/20 transition-colors">
+          <ArrowLeft size={24} />
+        </button>
+        <div>
+          <h1 className="text-2xl font-bold text-white tracking-tight">{company.name}</h1>
+          <p className="text-blue-100 text-sm">Registro de Entrega</p>
         </div>
       </header>
 

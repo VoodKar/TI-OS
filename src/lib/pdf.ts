@@ -8,7 +8,7 @@ export function generateDeliveryPDF(report: DeliveryReport) {
   const dateStr = format(new Date(report.timestamp), "dd/MM/yyyy HH:mm:ss", { locale: ptBR });
 
   // Add Background Color for Header
-  doc.setFillColor(37, 99, 235); // matches blue-600
+  doc.setFillColor(25, 25, 112); // matches MidnightBlue #191970
   doc.rect(0, 0, 210, 40, 'F');
 
   // Title

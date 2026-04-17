@@ -52,19 +52,10 @@ export const CompanyScreen: React.FC<Props> = ({ onSelect, onOpenHistory }) => {
 
   return (
     <div className="flex-1 flex flex-col bg-app-bg min-h-screen">
-      <header className="bg-primary px-8 pt-10 pb-8 sticky top-0 z-10 transition-all flex justify-between items-start shadow-lg shadow-primary/10">
-        <div className="flex flex-col gap-4">
-          <img 
-            src="/logo.png" 
-            alt="TI do Brasil" 
-            className="h-12 w-auto object-contain brightness-0 invert"
-            referrerPolicy="no-referrer"
-            onError={(e) => (e.currentTarget.style.display = 'none')}
-          />
-          <div>
-            <h1 className="text-2xl font-bold text-white tracking-tight">OS Digital</h1>
-            <p className="text-blue-100 text-sm mt-1">Selecionar Empresa</p>
-          </div>
+      <header className="bg-primary px-8 pt-12 pb-8 sticky top-0 z-10 transition-all flex justify-between items-start shadow-lg shadow-primary/10">
+        <div>
+          <h1 className="text-2xl font-bold text-white tracking-tight">OS Digital</h1>
+          <p className="text-blue-100 text-sm mt-1">Selecionar Empresa</p>
         </div>
         <button 
           onClick={onOpenHistory}
