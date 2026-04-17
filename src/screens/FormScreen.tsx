@@ -23,7 +23,7 @@ export const FormScreen: React.FC<Props> = ({ company, onBack }) => {
   const [report, setReport] = useState<DeliveryReport | null>(null);
   const [signatureMsg, setSignatureMsg] = useState(false);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!tag || !ticketNumber || !signature || !recipientName) {
       alert('Por favor, preencha todos os campos e assine o documento.');
       return;
@@ -45,6 +45,37 @@ export const FormScreen: React.FC<Props> = ({ company, onBack }) => {
     // Save to history
     const history = JSON.parse(localStorage.getItem('deliveryHistory') || '[]');
     localStorage.setItem('deliveryHistory', JSON.stringify([...history, newReport]));
+
+    // Webhook Integration
+    const webhookUrl = import.meta.env.VITE_MAKE_WEBHOOK_URL;
+    
+    if (webhookUrl) {
+      try {
+        const response = await fetch(webhookUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            chamado: ticketNumber,
+            empresa: company.name,
+            tipo: equipmentType,
+            tag: tag,
+            recebedor: recipientName,
+            data: format(new Date(newReport.timestamp), "dd/MM/yyyy HH:mm")
+          })
+        });
+
+        if (response.ok) {
+          alert("Dados enviados com sucesso");
+        } else {
+          alert("Erro ao enviar dados");
+        }
+      } catch (error) {
+        console.error('Webhook error:', error);
+        alert("Erro ao enviar dados");
+      }
+    }
   };
 
   const handleSharePDF = () => {
